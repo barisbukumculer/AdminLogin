@@ -7,14 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace AdminLogin
 {
-    public partial class Veriler : System.Web.UI.Page
+    public partial class SilmeSayfası : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int x = Convert.ToInt32(Request.QueryString["ID"].ToString());
             DataSet1TableAdapters.TBLADMINTableAdapter dt=new DataSet1TableAdapters.TBLADMINTableAdapter();
-            Repeater1.DataSource = dt.AdminListesi();
-            Repeater1.DataBind();
-
+            dt.AdminSil(x);
+            Response.Redirect("Veriler.Aspx");
         }
     }
 }
